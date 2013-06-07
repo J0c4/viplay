@@ -45,7 +45,6 @@ public class VAnt extends JLabel implements Runnable
     {
         this.runner = new Thread(this);
         this.runner.start();
-        System.out.println(this.runner.isAlive());
     }
     
     @Override

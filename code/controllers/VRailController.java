@@ -38,6 +38,5 @@ public class VRailController extends VAbstractController implements VIRunnableEn
         VAnt antEnded = this.antsRunning.remove();
         this.rail.remove(antEnded);
         this.rail.validate();
-        System.out.println("Removed: " + antEnded.getText());
     }
 }
