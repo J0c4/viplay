@@ -2,7 +2,7 @@ package code.controllers;
 
 import code.gui.VMainWindow;
 import code.gui.builder.VInstrumentBuilderPanel;
-import code.gui.control.VControlPane;
+import code.gui.control.VPlayModePane;
 import code.gui.railboard.VInstrumentPanel;
 import code.gui.railboard.VRailBoard;
 import code.model.instruments.VInstrument;
@@ -21,7 +21,7 @@ public class VMainWindowController extends VAbstractController implements MouseL
     private VMainWindow mainWindow;
     private VRailBoard railBoard;
     private VInstrumentBuilderPanel builder;
-    private VControlPane control;
+    private VPlayModePane control;
     
     public VMainWindowController(VMainWindow railBoard) 
     {

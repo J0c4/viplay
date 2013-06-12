@@ -8,7 +8,7 @@ import javax.swing.JButton;
  *
  * @author Jose Carlos
  */
-public class VControlPane extends VAbstractPanel
+public class VPlayModePane extends VAbstractPanel
 {
     /** UI components */
     private JButton start;

@@ -2,7 +2,7 @@ package code.gui;
 
 import code.controllers.VMainWindowController;
 import code.gui.builder.VInstrumentBuilderPanel;
-import code.gui.control.VControlPane;
+import code.gui.control.VPlayModePane;
 import code.gui.railboard.VRailBoard;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -22,7 +22,7 @@ public class VMainWindow extends JFrame
     private JMenuBar menuBar;
     private VRailBoard railBoard;
     private VInstrumentBuilderPanel builder;
-    private VControlPane control;
+    private VPlayModePane control;
     
     private VMainWindowController controller;
     
@@ -69,7 +69,7 @@ public class VMainWindow extends JFrame
         return builder;
     }
 
-    public VControlPane getControl() 
+    public VPlayModePane getControl() 
     {
         return control;
     }
@@ -98,7 +98,7 @@ public class VMainWindow extends JFrame
         // Create UI components
         this.menuBar = new JMenuBar();
         this.railBoard = new VRailBoard();
-        this.control = new VControlPane();
+        this.control = new VPlayModePane();
         this.builder = new VInstrumentBuilderPanel();
         this.controller = new VMainWindowController(this);
         
