@@ -2,8 +2,7 @@ package code.gui.railboard;
 
 import code.controllers.VRailBoardController;
 import code.gui.VAbstractPanel;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.BorderLayout;
 
 /**
  *
@@ -12,8 +11,8 @@ import java.awt.GridBagLayout;
 public class VRailBoard extends VAbstractPanel
 {
     /** UI Components */
-    private VInstrumentPanel instrumentPanel;
     private VRail rail;
+    public VInstrumentPanel instrumentPanel;
     
     /** Controller */
     private VRailBoardController controller;
@@ -43,22 +42,9 @@ public class VRailBoard extends VAbstractPanel
     @Override
     protected void configureComponents()
     {
-        setLayout(new GridBagLayout());
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        constraints.gridwidth = 1;
-        constraints.gridheight = 2;
-        constraints.weighty = 1;
-        constraints.weightx = 1;
-        constraints.fill = GridBagConstraints.BOTH;
-        add(this.rail, constraints);
-        constraints.gridx = 0;
-        constraints.gridy = 2;
-        constraints.gridwidth = 1;
-        constraints.gridheight = 1;
-        constraints.weighty = 0;
-        add(this.instrumentPanel, constraints);
+        setLayout(new BorderLayout());
+        add(this.rail, BorderLayout.CENTER);
+        add(this.instrumentPanel, BorderLayout.SOUTH);
     }
     
     @Override

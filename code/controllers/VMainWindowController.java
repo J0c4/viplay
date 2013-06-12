@@ -2,6 +2,7 @@ package code.controllers;
 
 import code.gui.VMainWindow;
 import code.gui.builder.VInstrumentBuilderPanel;
+import code.gui.control.VControlPane;
 import code.gui.railboard.VInstrumentPanel;
 import code.gui.railboard.VRailBoard;
 import code.model.instruments.VInstrument;
@@ -18,20 +19,25 @@ import javax.swing.JOptionPane;
 public class VMainWindowController extends VAbstractController implements MouseListener
 {
     private VMainWindow mainWindow;
+    private VRailBoard railBoard;
+    private VInstrumentBuilderPanel builder;
+    private VControlPane control;
     
     public VMainWindowController(VMainWindow railBoard) 
     {
         this.mainWindow = railBoard;
+        this.railBoard = railBoard.getRailBoard();
+        this.builder = railBoard.getBuilder();
+        this.control = railBoard.getControl();
     }
 
     @Override
     public void mouseClicked(MouseEvent e) 
     {
         Component clicked = e.getComponent();
-        JButton start = this.mainWindow.getControl().getStart();
-        JButton stop = this.mainWindow.getControl().getStop();
-        VInstrumentPanel instrumentsPanel = this.mainWindow.getRailBoard().getInstrumentPanel();
-        VInstrumentBuilderPanel builder = this.mainWindow.getBuilder();
+        JButton start = this.control.getStart();
+        JButton stop = this.control.getStop();
+        VInstrumentPanel instrumentsPanel = this.railBoard.getInstrumentPanel();
         if (clicked.isEnabled())
         {
             if (clicked.equals(start))
@@ -52,7 +58,7 @@ public class VMainWindowController extends VAbstractController implements MouseL
                     instrumentsPanel.setVisible(false);
                     start.setEnabled(true);
                     stop.setEnabled(false);
-                    builder.switchPanel();
+                    this.builder.switchPanel();
                 }
             }
         }
@@ -80,13 +86,12 @@ public class VMainWindowController extends VAbstractController implements MouseL
 
     private boolean loadInstrument() 
     {
-        VInstrumentBuilderController builderController = this.mainWindow.getBuilder().getController();
+        VInstrumentBuilderController builderController = this.builder.getController();
         VInstrument instrument = builderController.getInstrument();
         boolean isValidInstrument = instrument.isBuilt();
         if (isValidInstrument)
         {
-            VRailBoard railBoard = this.mainWindow.getRailBoard();
-            railBoard.getController().loadInstrument(instrument);
+            this.railBoard.getController().loadInstrument(instrument);
         }
         else
         {
@@ -100,8 +105,7 @@ public class VMainWindowController extends VAbstractController implements MouseL
         boolean unloaded = false;
         try
         {
-            VRailBoard railBoard = this.mainWindow.getRailBoard();
-            railBoard.getController().unloadInstrument();
+            this.railBoard.getController().unloadInstrument();
             unloaded = true;
         }
         catch (Exception e)

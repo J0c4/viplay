@@ -16,23 +16,23 @@ public class VRailBoardController extends VAbstractController implements KeyList
     private VRailBoard railBoard;
     
     private VRailController railController;
-    private VInstrumentPanelController panelController;
+    private VInstrumentPanelController instrumentPanelController;
     
     public VRailBoardController(VRailBoard panel) 
     {
         this.railBoard = panel;
         this.railController = this.railBoard.getRail().getController();
-        this.panelController = this.railBoard.getInstrumentPanel().getController();
+        this.instrumentPanelController = this.railBoard.getInstrumentPanel().getController();
     }
     
     public void loadInstrument(VInstrument toLoad)
     {
-        this.panelController.loadInstrument(toLoad);
+        this.instrumentPanelController.loadInstrument(toLoad);
     }
     
     public void unloadInstrument()
     {
-        this.panelController.unloadInstrument();
+        this.instrumentPanelController.unloadInstrument();
     }
     
     @Override
@@ -43,7 +43,7 @@ public class VRailBoardController extends VAbstractController implements KeyList
     @Override
     public void keyPressed(KeyEvent e) 
     {
-        VAnt toRun = this.panelController.playInstrument(new VKey(e.getKeyCode(), String.valueOf(e.getKeyChar())));
+        VAnt toRun = this.instrumentPanelController.playInstrument(new VKey(e.getKeyCode(), String.valueOf(e.getKeyChar())));
         railController.runAnt(toRun);
     }
 
