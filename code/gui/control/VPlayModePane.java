@@ -1,7 +1,8 @@
 package code.gui.control;
 
+import code.controllers.VPlayModeController;
 import code.gui.VAbstractPanel;
-import javax.swing.BorderFactory;
+import code.gui.VMainWindow;
 import javax.swing.JButton;
 
 /**
@@ -14,6 +15,9 @@ public class VPlayModePane extends VAbstractPanel
     private JButton start;
     private JButton stop;
     
+    /** Controller */
+    private VPlayModeController controller;
+    
     public JButton getStart() 
     {
         return start;
@@ -22,6 +26,11 @@ public class VPlayModePane extends VAbstractPanel
     public JButton getStop() 
     {
         return stop;
+    }
+    
+    public void setWindow(VMainWindow window)
+    {
+        this.controller.setWindow(window);
     }
 
     @Override
@@ -34,7 +43,6 @@ public class VPlayModePane extends VAbstractPanel
     @Override
     protected void configureComponents() 
     {
-        setBorder(BorderFactory.createTitledBorder("Main control"));
         this.stop.setEnabled(false);
         add(this.start);
         add(this.stop);
@@ -43,5 +51,8 @@ public class VPlayModePane extends VAbstractPanel
     @Override
     protected void configureControllers() 
     {
+        this.controller = new VPlayModeController(this);
+        this.start.addMouseListener(this.controller);
+        this.stop.addMouseListener(this.controller);
     }
 }

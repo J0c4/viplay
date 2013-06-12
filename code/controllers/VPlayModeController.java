@@ -16,48 +16,59 @@ import javax.swing.JOptionPane;
  *
  * @author Jose Carlos
  */
-public class VMainWindowController extends VAbstractController implements MouseListener
+public class VPlayModeController implements MouseListener
 {
+    private VPlayModePane pane;
+    
+    private JButton start;
+    private JButton stop;
+    
     private VMainWindow mainWindow;
     private VRailBoard railBoard;
     private VInstrumentBuilderPanel builder;
-    private VPlayModePane control;
     
-    public VMainWindowController(VMainWindow railBoard) 
+    public VPlayModeController(VPlayModePane pane) 
     {
-        this.mainWindow = railBoard;
-        this.railBoard = railBoard.getRailBoard();
-        this.builder = railBoard.getBuilder();
-        this.control = railBoard.getControl();
+        this.pane = pane;
+        this.start = pane.getStart();
+        this.stop = pane.getStop();
+    }
+    
+    public void setWindow(VMainWindow window)
+    {
+        if (window != null)
+        {
+            this.mainWindow = window;
+            this.railBoard = window.getRailBoard();
+            this.builder = window.getBuilder();
+        }
     }
 
     @Override
     public void mouseClicked(MouseEvent e) 
     {
         Component clicked = e.getComponent();
-        JButton start = this.control.getStart();
-        JButton stop = this.control.getStop();
         VInstrumentPanel instrumentsPanel = this.railBoard.getInstrumentPanel();
         if (clicked.isEnabled())
         {
-            if (clicked.equals(start))
+            if (clicked.equals(this.start))
             {
                 if (loadInstrument())
                 {
                     instrumentsPanel.setVisible(true);
                     instrumentsPanel.setFocusable(true);
-                    start.setEnabled(false);
-                    stop.setEnabled(true);
-                    builder.switchPanel();
+                    this.start.setEnabled(false);
+                    this.stop.setEnabled(true);
+                    this.builder.switchPanel();
                 }
             }
-            else if (clicked.equals(stop))
+            else if (clicked.equals(this.stop))
             {
                 if (unloadInstrument())
                 {
                     instrumentsPanel.setVisible(false);
-                    start.setEnabled(true);
-                    stop.setEnabled(false);
+                    this.start.setEnabled(true);
+                    this.stop.setEnabled(false);
                     this.builder.switchPanel();
                 }
             }

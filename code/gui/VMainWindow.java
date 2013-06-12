@@ -1,8 +1,7 @@
 package code.gui;
 
-import code.controllers.VMainWindowController;
 import code.gui.builder.VInstrumentBuilderPanel;
-import code.gui.control.VPlayModePane;
+import code.gui.control.VControlCenter;
 import code.gui.railboard.VRailBoard;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -22,9 +21,7 @@ public class VMainWindow extends JFrame
     private JMenuBar menuBar;
     private VRailBoard railBoard;
     private VInstrumentBuilderPanel builder;
-    private VPlayModePane control;
-    
-    private VMainWindowController controller;
+    private VControlCenter controlCenter;
     
     public static void main(String[] args)
     {
@@ -69,9 +66,9 @@ public class VMainWindow extends JFrame
         return builder;
     }
 
-    public VPlayModePane getControl() 
+    public VControlCenter getControl() 
     {
-        return control;
+        return controlCenter;
     }
 
     public JMenuBar getTopMenuBar() 
@@ -98,9 +95,8 @@ public class VMainWindow extends JFrame
         // Create UI components
         this.menuBar = new JMenuBar();
         this.railBoard = new VRailBoard();
-        this.control = new VPlayModePane();
         this.builder = new VInstrumentBuilderPanel();
-        this.controller = new VMainWindowController(this);
+        this.controlCenter = new VControlCenter(this);
         
         // Create Menu
         JMenu fileMenu = new JMenu("File");
@@ -112,15 +108,11 @@ public class VMainWindow extends JFrame
         this.menuBar.add(fileMenu);
         this.menuBar.add(configMenu);
         
-        // Add buttons listeners
-        this.control.getStart().addMouseListener(this.controller);
-        this.control.getStop().addMouseListener(this.controller);
-        
         // Add components to current frame
         add(this.menuBar, BorderLayout.NORTH);
         add(this.railBoard, BorderLayout.CENTER);
         add(this.builder, BorderLayout.EAST);
-        add(this.control, BorderLayout.SOUTH);
+        add(this.controlCenter, BorderLayout.SOUTH);
     }
 
     private void allocateFrame() 
