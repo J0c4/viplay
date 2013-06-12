@@ -2,6 +2,7 @@ package code.gui.railboard;
 
 import code.controllers.VRailController;
 import code.gui.VAbstractPanel;
+import java.awt.BorderLayout;
 import java.awt.Color;
 
 /**
@@ -25,6 +26,7 @@ public class VRail extends VAbstractPanel
     @Override
     protected void configureComponents() 
     {
+        setLayout(new BorderLayout());
         setBackground(Color.WHITE);
     }
 

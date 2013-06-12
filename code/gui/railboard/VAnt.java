@@ -52,13 +52,13 @@ public class VAnt extends JLabel implements Runnable
     {
         try
         {
-            setVisible(true);
             while (this.y != 0)
             {
                 this.y -= 0.05;
                 setLocation(this.x, this.y);
                 Thread.sleep(10);
             }
+            setVisible(false);
         }
         catch (Exception e)
         {   

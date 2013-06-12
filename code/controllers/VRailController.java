@@ -4,6 +4,7 @@ import code.gui.railboard.VAnt;
 import code.gui.railboard.VRail;
 import code.model.VIRunnableEndListener;
 import code.model.datastructures.VQueue;
+import java.awt.BorderLayout;
 
 /**
  *
@@ -24,7 +25,7 @@ public class VRailController extends VAbstractController implements VIRunnableEn
     {
         if (ant != null)
         {
-            this.rail.add(ant);
+            this.rail.add(ant, BorderLayout.SOUTH);
             this.rail.validate();
             this.antsRunning.add(ant);
             ant.addRunnableEndListener(this);
@@ -37,6 +38,5 @@ public class VRailController extends VAbstractController implements VIRunnableEn
     {
         VAnt antEnded = this.antsRunning.remove();
         this.rail.remove(antEnded);
-        this.rail.validate();
     }
 }

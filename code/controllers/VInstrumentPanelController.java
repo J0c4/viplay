@@ -59,7 +59,7 @@ public class VInstrumentPanelController extends VAbstractController
         Set<Map.Entry<VKey, VIPlayable>> elements = this.loaded.getElements().entrySet();
         for (Map.Entry entry : elements)
         {
-            String labelText = entry.getKey() + " - " + entry.getValue();
+            String labelText = entry.getKey().toString();
             JButton newElement = new JButton(labelText);
             this.antMap.put((VKey)entry.getKey(), newElement);
             this.panel.add(newElement);
