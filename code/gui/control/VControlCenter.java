@@ -20,8 +20,8 @@ public class VControlCenter extends JTabbedPane
         this.recRunMode = new VRecRunPane();
         this.learnMode = new VLearnPane();
         
-        this.playMode.setWindow(window);
-        this.recRunMode.setWindow(window);
+        this.playMode.setWindowReference(window);
+        this.recRunMode.setWindowReference(window);
         
         addTab("Play mode", this.playMode);
         addTab("Rec/Run Secuence mode", this.recRunMode);

@@ -1,12 +1,8 @@
 package code.controllers;
 
-import code.gui.VMainWindow;
-import code.gui.builder.VInstrumentBuilderPanel;
 import code.gui.control.VRecRunPane;
-import code.gui.railboard.VRailBoard;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -14,7 +10,7 @@ import javax.swing.JLabel;
  *
  * @author Jose Carlos
  */
-public class VRecRunController implements MouseListener
+public class VRecRunController extends VControlCenterController
 {
     private VRecRunPane pane;
     
@@ -23,10 +19,6 @@ public class VRecRunController implements MouseListener
     private JButton stop;
     private JButton loadSecuence;
     private JLabel fileName;
-    
-    private VMainWindow mainWindow;
-    private VRailBoard railBoard;
-    private VInstrumentBuilderPanel builder;
 
     public VRecRunController(VRecRunPane pane) 
     {
@@ -36,16 +28,6 @@ public class VRecRunController implements MouseListener
         this.stop = pane.getStop();
         this.loadSecuence = pane.getLoadSecuence();
         this.fileName = pane.getFileName();
-    }
-    
-    public void setWindow(VMainWindow window)
-    {
-        if (window != null)
-        {
-            this.mainWindow = window;
-            this.railBoard = window.getRailBoard();
-            this.builder = window.getBuilder();
-        }
     }
 
     @Override
@@ -71,25 +53,5 @@ public class VRecRunController implements MouseListener
                 
             }
         }
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) 
-    {
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) 
-    {
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) 
-    {
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) 
-    {
     }
 }

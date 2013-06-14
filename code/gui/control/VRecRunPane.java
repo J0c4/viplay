@@ -50,9 +50,9 @@ public class VRecRunPane extends VAbstractPanel
         return stop;
     }
     
-    public void setWindow(VMainWindow window)
+    public void setWindowReference(VMainWindow window)
     {
-        this.controller.setWindow(window);
+        this.controller.setWindowReference(window);
     }
     
     @Override
