@@ -2,8 +2,6 @@ package code.controllers;
 
 import code.gui.control.VRecRunPane;
 import code.model.VFileManager;
-import code.model.datastructures.VQueue;
-import code.model.recorder.VRecord;
 import code.model.recorder.VSequence;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
