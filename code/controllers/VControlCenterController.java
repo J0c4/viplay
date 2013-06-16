@@ -2,8 +2,10 @@ package code.controllers;
 
 import code.gui.VMainWindow;
 import code.gui.builder.VInstrumentBuilderPanel;
+import code.gui.control.VControlCenter;
 import code.gui.railboard.VRailBoard;
 import code.model.instruments.VInstrument;
+import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
@@ -17,12 +19,14 @@ public abstract class VControlCenterController implements MouseListener
     protected VMainWindow mainWindow;
     protected VRailBoard railBoard;
     protected VInstrumentBuilderPanel builder;
+    protected VControlCenter controlCenter;
     
-    public void setWindowReference(VMainWindow window)
+    public void setWindowReference()
     {
-        this.mainWindow = window;
-        this.railBoard = window.getRailBoard();
-        this.builder = window.getBuilder();
+        this.mainWindow = VMainWindow.window;
+        this.railBoard = VMainWindow.window.getRailBoard();
+        this.builder = VMainWindow.window.getBuilder();
+        this.controlCenter = VMainWindow.window.getControl();
     }
 
     protected boolean loadInstrument() 
@@ -33,6 +37,9 @@ public abstract class VControlCenterController implements MouseListener
         if (isValidInstrument)
         {
             this.railBoard.getController().loadInstrument(instrument);
+            this.railBoard.showInstrumentPanel(true);
+            this.builder.setVisible(false);
+            enableTabs(false);
         }
         else
         {
@@ -47,12 +54,27 @@ public abstract class VControlCenterController implements MouseListener
         try
         {
             this.railBoard.getController().unloadInstrument();
+            this.railBoard.showInstrumentPanel(false);
+            this.builder.setVisible(true);
             unloaded = true;
+            enableTabs(true);
         }
         catch (Exception e)
         {}
         
         return unloaded;
+    }
+    
+    protected void enableTabs(boolean enabled)
+    {
+        int currentTab = this.controlCenter.getSelectedIndex();
+        for (int index = 0; index < this.controlCenter.getTabCount(); index++)
+        {
+            if (index != currentTab)
+            {
+                this.controlCenter.setEnabledAt(index, enabled);
+            }
+        }
     }
     
     @Override

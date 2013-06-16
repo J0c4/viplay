@@ -35,11 +35,6 @@ public class VInstrumentBuilderPanel extends VAbstractPanel
         return this.buildControls;
     }
     
-    public void switchPanel()
-    {
-        setVisible(!this.isVisible());
-    }
-    
     @Override
     protected void createComponents() 
     {

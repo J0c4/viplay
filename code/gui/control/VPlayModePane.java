@@ -2,7 +2,6 @@ package code.gui.control;
 
 import code.controllers.VPlayModeController;
 import code.gui.VAbstractPanel;
-import code.gui.VMainWindow;
 import javax.swing.JButton;
 
 /**
@@ -28,9 +27,9 @@ public class VPlayModePane extends VAbstractPanel
         return stop;
     }
     
-    public void setWindowReference(VMainWindow window)
+    public void setWindowReference()
     {
-        this.controller.setWindowReference(window);
+        this.controller.setWindowReference();
     }
 
     @Override

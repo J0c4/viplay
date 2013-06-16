@@ -80,6 +80,13 @@ public class VMainWindow extends JFrame
     {
         return railBoard;
     }
+    
+    @Override
+    public void setVisible(boolean visible)
+    {
+        super.setVisible(visible);
+        this.controlCenter.setWindowReference();
+    }
 
     private void initComponents() 
     {
@@ -96,7 +103,7 @@ public class VMainWindow extends JFrame
         this.menuBar = new JMenuBar();
         this.railBoard = new VRailBoard();
         this.builder = new VInstrumentBuilderPanel();
-        this.controlCenter = new VControlCenter(this);
+        this.controlCenter = new VControlCenter();
         
         // Create Menu
         JMenu fileMenu = new JMenu("File");

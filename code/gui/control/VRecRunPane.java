@@ -2,10 +2,8 @@ package code.gui.control;
 
 import code.controllers.VRecRunController;
 import code.gui.VAbstractPanel;
-import code.gui.VMainWindow;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JSeparator;
 
 /**
  *
@@ -17,7 +15,6 @@ public class VRecRunPane extends VAbstractPanel
     private JButton rec;
     private JButton play;
     private JButton stop;
-    private JSeparator separator;
     private JButton loadSecuence;
     private JLabel fileLabel;
     private JLabel fileName;
@@ -50,9 +47,9 @@ public class VRecRunPane extends VAbstractPanel
         return stop;
     }
     
-    public void setWindowReference(VMainWindow window)
+    public void setWindowReference()
     {
-        this.controller.setWindowReference(window);
+        this.controller.setWindowReference();
     }
     
     @Override
@@ -61,7 +58,6 @@ public class VRecRunPane extends VAbstractPanel
         this.rec = new JButton("Rec");
         this.play = new JButton("Play");
         this.stop = new JButton("Stop");
-        this.separator = new JSeparator(JSeparator.VERTICAL);
         this.loadSecuence = new JButton("Load Secuence");
         this.fileLabel =  new JLabel("Secuence: ");
         this.fileName = new JLabel("No secuence loaded");
@@ -76,7 +72,6 @@ public class VRecRunPane extends VAbstractPanel
         add(this.rec);
         add(this.play);
         add(this.stop);
-        add(this.separator);
         add(this.loadSecuence);
         add(this.fileLabel);
         add(this.fileName);
