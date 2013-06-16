@@ -32,6 +32,12 @@ public class VRailBoard extends VAbstractPanel
         return instrumentPanel;
     }
     
+    public void showInstrumentPanel(boolean visible)
+    {
+        this.instrumentPanel.setVisible(visible);
+        this.instrumentPanel.requestFocusInWindow();
+    }
+    
     @Override
     protected void createComponents()
     {
@@ -43,6 +49,8 @@ public class VRailBoard extends VAbstractPanel
     protected void configureComponents()
     {
         setLayout(new BorderLayout());
+        this.instrumentPanel.setFocusable(true);
+        this.instrumentPanel.setRequestFocusEnabled(true);
         add(this.rail, BorderLayout.CENTER);
         add(this.instrumentPanel, BorderLayout.SOUTH);
     }
