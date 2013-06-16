@@ -60,6 +60,7 @@ public class VSequence implements Serializable, Runnable
     public void run() 
     {
         VInstrumentPanelController player = VMainWindow.window.getRailBoard().getInstrumentPanel().getController();
+        VQueue<VRecord> recovery = new VQueue<VRecord>();
         while (!this.records.isEmpty())
         {
             VRecord record = records.remove();
@@ -69,6 +70,8 @@ public class VSequence implements Serializable, Runnable
             }
             catch(Exception e){}
             player.playInstrument(record.getKey());
+            recovery.add(record);
         }
+        this.records = recovery;
     }
 }
