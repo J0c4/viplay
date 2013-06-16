@@ -43,7 +43,8 @@ public class VRailBoardController extends VAbstractController implements KeyList
     @Override
     public void keyPressed(KeyEvent e) 
     {
-        VAnt toRun = this.instrumentPanelController.playInstrument(new VKey(e.getKeyCode(), String.valueOf(e.getKeyChar())));
+        VKey key = new VKey(e.getKeyCode(), String.valueOf(e.getKeyChar()));
+        VAnt toRun = this.instrumentPanelController.playInstrument(key);
         railController.runAnt(toRun);
     }
 

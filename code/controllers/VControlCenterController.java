@@ -5,7 +5,6 @@ import code.gui.builder.VInstrumentBuilderPanel;
 import code.gui.control.VControlCenter;
 import code.gui.railboard.VRailBoard;
 import code.model.instruments.VInstrument;
-import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
