@@ -12,7 +12,7 @@ public class VRailBoard extends VAbstractPanel
 {
     /** UI Components */
     private VRail rail;
-    public VInstrumentPanel instrumentPanel;
+    private VInstrumentPanel instrumentPanel;
     
     /** Controller */
     private VRailBoardController controller;
