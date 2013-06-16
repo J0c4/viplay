@@ -20,6 +20,8 @@ public abstract class VControlCenterController implements MouseListener
     protected VInstrumentBuilderPanel builder;
     protected VControlCenter controlCenter;
     
+    protected VInstrument instrumentLoaded;
+    
     public void setWindowReference()
     {
         this.mainWindow = VMainWindow.window;
@@ -27,15 +29,40 @@ public abstract class VControlCenterController implements MouseListener
         this.builder = VMainWindow.window.getBuilder();
         this.controlCenter = VMainWindow.window.getControl();
     }
+    
+    @Override
+    public void mouseClicked(MouseEvent e) 
+    {
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) 
+    {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) 
+    {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) 
+    {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) 
+    {
+    }
 
     protected boolean loadInstrument() 
     {
         VInstrumentBuilderController builderController = this.builder.getController();
-        VInstrument instrument = builderController.getInstrument();
-        boolean isValidInstrument = instrument.isBuilt();
+        this.instrumentLoaded = builderController.getInstrument();
+        boolean isValidInstrument = this.instrumentLoaded.isBuilt();
         if (isValidInstrument)
         {
-            this.railBoard.getController().loadInstrument(instrument);
+            this.railBoard.getController().loadInstrument(this.instrumentLoaded);
             this.railBoard.showInstrumentPanel(true);
             this.builder.setVisible(false);
             enableTabs(false);
@@ -74,30 +101,5 @@ public abstract class VControlCenterController implements MouseListener
                 this.controlCenter.setEnabledAt(index, enabled);
             }
         }
-    }
-    
-    @Override
-    public void mouseClicked(MouseEvent e) 
-    {
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) 
-    {
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) 
-    {
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) 
-    {
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) 
-    {
     }
 }

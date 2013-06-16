@@ -14,7 +14,6 @@ import java.awt.event.MouseListener;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -59,6 +58,12 @@ public class VInstrumentBuilderController extends VAbstractController implements
     public VInstrument getInstrument()
     {
         return this.controlsController.getInstrumentBuilt();
+    }
+    
+    public void loadInstrument(VInstrument toLoad)
+    {
+        this.builtController.loadTable(toLoad);
+        this.controlsController.loadInstrument(toLoad);
     }
 
     @Override
@@ -114,8 +119,7 @@ public class VInstrumentBuilderController extends VAbstractController implements
             VInstrument read = VFileManager.instance.readInstrument();
             if (read != null)
             {
-                this.builtController.loadTable(read);
-                this.controlsController.loadInstrument(read);
+                loadInstrument(read);
             }
         }
     }

@@ -2,6 +2,7 @@ package code.model;
 
 import code.gui.VMainWindow;
 import code.model.instruments.VInstrument;
+import code.model.recorder.VSequence;
 import java.io.*;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -71,6 +72,77 @@ public class VFileManager
                     FileInputStream inputStream = new FileInputStream(target);
                     ObjectInputStream inputObject = new ObjectInputStream(inputStream);
                     read = (VInstrument) inputObject.readObject();
+                    inputObject.close();
+                    inputStream.close();
+                }
+                catch (ClassNotFoundException ex)
+                {
+                    ex.printStackTrace();
+                }
+                catch (FileNotFoundException ex)
+                {
+                    ex.printStackTrace();
+                }
+                catch (IOException ex)
+                {
+                    ex.printStackTrace();
+                }
+                finally
+                {
+                }
+            break;
+        }
+        return read;
+    }
+    
+    public void saveSecuence(VSequence toSave)
+    {
+        File target;
+        JFileChooser fileChosser = new JFileChooser();
+        int option = fileChosser.showSaveDialog(VMainWindow.window);
+        switch (option)
+        {
+            case JFileChooser.APPROVE_OPTION:
+                try
+                {
+                    target = fileChosser.getSelectedFile();
+                    FileOutputStream outputStream = new FileOutputStream(target);
+                    ObjectOutputStream outputObject = new ObjectOutputStream(outputStream);
+                    toSave.setName(target.getName());
+                    outputObject.writeObject(toSave);
+
+                    outputObject.close();
+                    outputStream.close();
+                }
+                catch (FileNotFoundException ex)
+                {
+                    ex.printStackTrace();
+                }
+                catch (IOException ex)
+                {
+                    ex.printStackTrace();
+                }
+                finally
+                {
+                }
+            break;
+        }
+    }
+    
+    public VSequence readSequence()
+    {
+        VSequence read = null;
+        JFileChooser fileChosser = new JFileChooser();
+        int option = fileChosser.showOpenDialog(VMainWindow.window);
+        switch (option)
+        {
+            case JFileChooser.APPROVE_OPTION:
+                try
+                {
+                    File target = fileChosser.getSelectedFile();
+                    FileInputStream inputStream = new FileInputStream(target);
+                    ObjectInputStream inputObject = new ObjectInputStream(inputStream);
+                    read = (VSequence) inputObject.readObject();
                     inputObject.close();
                     inputStream.close();
                 }

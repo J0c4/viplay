@@ -5,6 +5,7 @@ import code.gui.railboard.VInstrumentPanel;
 import code.model.instruments.VIPlayable;
 import code.model.instruments.VInstrument;
 import code.model.instruments.VKey;
+import code.model.recorder.VSequence;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -18,7 +19,9 @@ public class VInstrumentPanelController extends VAbstractController
 {
     private VInstrumentPanel panel;
     private VInstrument loaded;
+    private VSequence recorder;
     private Map<VKey, JButton> antMap;
+    private boolean isRecording;
 
     public VInstrumentPanelController(VInstrumentPanel panel) 
     {
@@ -38,6 +41,12 @@ public class VInstrumentPanelController extends VAbstractController
         this.panel.removeAll();
         this.antMap.clear();
     }
+
+    public void setRecorder(VSequence recorder) 
+    {
+        this.recorder = recorder;
+        this.isRecording = true;
+    }
     
     public VAnt playInstrument(VKey key)
     {
@@ -50,6 +59,11 @@ public class VInstrumentPanelController extends VAbstractController
             String antLabel = key.getKeySymbol();
             triggered = new VAnt(antLabel, antXStart, antYStart);
             this.loaded.playElement(key);
+            
+            if (this.isRecording)
+            {
+                this.recorder.record(key);
+            }
         }
         return triggered;
     }
