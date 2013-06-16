@@ -39,7 +39,13 @@ public class VRailBoardController extends VAbstractController implements KeyList
     public void setInstrumentRecorder(VSequence recorder)
     {
         this.instrumentPanelController.setRecorder(recorder);
-    }            
+    }
+    
+    public void playElement(VKey key)
+    {
+        VAnt toRun = this.instrumentPanelController.playInstrument(key);
+        railController.runAnt(toRun);
+    }
     
     @Override
     public void keyTyped(KeyEvent e) 
@@ -50,8 +56,7 @@ public class VRailBoardController extends VAbstractController implements KeyList
     public void keyPressed(KeyEvent e) 
     {
         VKey key = new VKey(e.getKeyCode(), String.valueOf(e.getKeyChar()));
-        VAnt toRun = this.instrumentPanelController.playInstrument(key);
-        railController.runAnt(toRun);
+        playElement(key);
     }
 
     @Override

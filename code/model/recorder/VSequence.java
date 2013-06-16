@@ -1,6 +1,7 @@
 package code.model.recorder;
 
 import code.controllers.VInstrumentPanelController;
+import code.controllers.VRailBoardController;
 import code.gui.VMainWindow;
 import code.model.datastructures.VQueue;
 import code.model.instruments.VInstrument;
@@ -59,7 +60,7 @@ public class VSequence implements Serializable, Runnable
     @Override
     public void run() 
     {
-        VInstrumentPanelController player = VMainWindow.window.getRailBoard().getInstrumentPanel().getController();
+        VRailBoardController player = VMainWindow.window.getRailBoard().getController();
         VQueue<VRecord> recovery = new VQueue<VRecord>();
         while (!this.records.isEmpty())
         {
@@ -69,7 +70,7 @@ public class VSequence implements Serializable, Runnable
                 Thread.sleep(record.getStartTime());
             }
             catch(Exception e){}
-            player.playInstrument(record.getKey());
+            player.playElement(record.getKey());
             recovery.add(record);
         }
         this.records = recovery;
