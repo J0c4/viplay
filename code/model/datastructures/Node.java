@@ -1,10 +1,12 @@
 package code.model.datastructures;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Jose Carlos
  */
-public class Node<T>
+public class Node<T> implements Serializable
 {
     private T data;
     private Node<T> next;

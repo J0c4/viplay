@@ -1,10 +1,12 @@
 package code.model.datastructures;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Jose Carlos
  */
-public class VQueue<T>
+public class VQueue<T extends Serializable> implements Serializable
 {
     private Node<T> first;
     private Node<T> last;
