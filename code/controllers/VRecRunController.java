@@ -70,13 +70,15 @@ public class VRecRunController extends VControlCenterController
             {
                 if (unloadInstrument())
                 {
+                    setRunningState(false);
                     if (this.isRecording)
                     {
+                        File saved = null;
                         if (!this.sequence.getRecords().isEmpty())
                         {
-                            File saved = VFileManager.instance.saveSecuence(this.sequence);
-                            this.sequence = saved == null ? null : this.sequence;
+                            saved = VFileManager.instance.saveSecuence(this.sequence);
                         }
+                        this.sequence = saved == null ? null : this.sequence;
                         this.isRecording = false;
                         this.player.stopRecording();
                         loadSequence();
@@ -87,7 +89,6 @@ public class VRecRunController extends VControlCenterController
                         this.isReproducing = false;
                     }
                     this.railBoard.clear();
-                    setRunningState(false);
                 }
             }
             else if (clicked.equals(this.loadSecuenceButton))
