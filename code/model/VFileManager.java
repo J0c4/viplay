@@ -95,9 +95,9 @@ public class VFileManager
         return read;
     }
     
-    public void saveSecuence(VSequence toSave)
+    public File saveSecuence(VSequence toSave)
     {
-        File target;
+        File target = null;
         JFileChooser fileChosser = new JFileChooser();
         int option = fileChosser.showSaveDialog(VMainWindow.window);
         switch (option)
@@ -127,6 +127,7 @@ public class VFileManager
                 }
             break;
         }
+        return target;
     }
     
     public VSequence readSequence()
