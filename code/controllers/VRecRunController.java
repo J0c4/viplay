@@ -25,6 +25,7 @@ public class VRecRunController extends VControlCenterController
     
     private VSequence sequence;
     private boolean isRecording;
+    private boolean isReproducing;
 
     public boolean isSecuenceSet()
     {
@@ -61,23 +62,32 @@ public class VRecRunController extends VControlCenterController
                 if (loadInstrument())
                 {
                     setRunningState(true);
-                    new Thread(sequence).start();
+                    this.sequence.reproduce();
+                    this.isReproducing = true;
                 }
             }
             else if (clicked.equals(this.stop))
             {
                 if (unloadInstrument())
                 {
-                    setRunningState(false);
                     if (this.isRecording)
                     {
-                        File saved = VFileManager.instance.saveSecuence(this.sequence);
-                        this.sequence = saved == null ? null : this.sequence;
+                        if (!this.sequence.getRecords().isEmpty())
+                        {
+                            File saved = VFileManager.instance.saveSecuence(this.sequence);
+                            this.sequence = saved == null ? null : this.sequence;
+                        }
                         this.isRecording = false;
                         this.player.stopRecording();
                         loadSequence();
                     }
+                    else if (this.isReproducing)
+                    {
+                        this.sequence.stop();
+                        this.isReproducing = false;
+                    }
                     this.railBoard.clear();
+                    setRunningState(false);
                 }
             }
             else if (clicked.equals(this.loadSecuenceButton))

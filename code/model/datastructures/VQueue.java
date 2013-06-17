@@ -51,6 +51,14 @@ public class VQueue<T extends Serializable> implements Serializable, Iterable<T>
         }
         return res;
     }
+    
+    public void addAll(VQueue<T> from)
+    {
+        for (T data : from)
+        {
+            add(data);
+        }
+    }
 
     @Override
     public Iterator<T> iterator() 

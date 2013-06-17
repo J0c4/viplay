@@ -15,6 +15,7 @@ public class VSequence implements Serializable, Runnable
 {
     private VInstrument instrument;
     private VQueue<VRecord> records;
+    private Thread runner;
     private String name;
     
     private long lastPlayedTime;
@@ -37,6 +38,11 @@ public class VSequence implements Serializable, Runnable
         return records;
     }
 
+    public Thread getRunner() 
+    {
+        return runner;
+    }
+
     public String getName() 
     {
         return name;
@@ -55,23 +61,36 @@ public class VSequence implements Serializable, Runnable
         VRecord newRecord = new VRecord(key, startTime);
         this.records.add(newRecord);
     }
+    
+    public void reproduce()
+    {
+        this.runner = new Thread(this);
+        this.runner.start();
+    }
+    
+    public void stop()
+    {
+        if (this.runner != null && this.runner.isAlive())
+        {
+            this.runner.suspend();
+        }
+    }
 
     @Override
     public void run() 
     {
         VRailBoardController player = VMainWindow.window.getRailBoard().getController();
         VQueue<VRecord> recovery = new VQueue<VRecord>();
-        while (!this.records.isEmpty())
+        recovery.addAll(this.records);
+        while (!recovery.isEmpty())
         {
-            VRecord record = records.remove();
+            VRecord record = recovery.remove();
             try
             {
                 Thread.sleep(record.getStartTime());
             }
             catch(Exception e){}
             player.playElement(record.getKey());
-            recovery.add(record);
         }
-        this.records = recovery;
     }
 }
