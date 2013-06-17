@@ -38,6 +38,11 @@ public class VRailBoard extends VAbstractPanel
         this.instrumentPanel.requestFocusInWindow();
     }
     
+    public void clear()
+    {
+        this.rail.clear();
+    }
+    
     @Override
     protected void createComponents()
     {

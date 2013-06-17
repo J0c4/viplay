@@ -4,7 +4,6 @@ import code.gui.railboard.VAnt;
 import code.gui.railboard.VRailBoard;
 import code.model.instruments.VInstrument;
 import code.model.instruments.VKey;
-import code.model.recorder.VSequence;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -34,11 +33,6 @@ public class VRailBoardController extends VAbstractController implements KeyList
     public void unloadInstrument()
     {
         this.instrumentPanelController.unloadInstrument();
-    }
-    
-    public void setInstrumentRecorder(VSequence recorder)
-    {
-        this.instrumentPanelController.setRecorder(recorder);
     }
     
     public void playElement(VKey key)

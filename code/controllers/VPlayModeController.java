@@ -43,6 +43,7 @@ public class VPlayModeController extends VControlCenterController
                 {
                     this.start.setEnabled(true);
                     this.stop.setEnabled(false);
+                    this.railBoard.clear();
                 }
             }
         }

@@ -20,6 +20,8 @@ public abstract class VControlCenterController implements MouseListener
     protected VInstrumentBuilderPanel builder;
     protected VControlCenter controlCenter;
     
+    protected VInstrumentPanelController player;
+    
     protected VInstrument instrumentLoaded;
     
     public void setWindowReference()
@@ -28,6 +30,7 @@ public abstract class VControlCenterController implements MouseListener
         this.railBoard = VMainWindow.window.getRailBoard();
         this.builder = VMainWindow.window.getBuilder();
         this.controlCenter = VMainWindow.window.getControl();
+        this.player = this.railBoard.getInstrumentPanel().getController();
     }
     
     @Override

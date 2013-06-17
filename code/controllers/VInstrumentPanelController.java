@@ -42,10 +42,16 @@ public class VInstrumentPanelController extends VAbstractController
         this.antMap.clear();
     }
 
-    public void setRecorder(VSequence recorder) 
+    public void startRecording(VSequence recorder) 
     {
         this.recorder = recorder;
         this.isRecording = true;
+    }
+    
+    public void stopRecording()
+    {
+        this.recorder = null;
+        this.isRecording = false;
     }
     
     public VAnt playInstrument(VKey key)

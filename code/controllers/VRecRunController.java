@@ -74,8 +74,10 @@ public class VRecRunController extends VControlCenterController
                         File saved = VFileManager.instance.saveSecuence(this.sequence);
                         this.sequence = saved == null ? null : this.sequence;
                         this.isRecording = false;
+                        this.player.stopRecording();
                         loadSequence();
                     }
+                    this.railBoard.clear();
                 }
             }
             else if (clicked.equals(this.loadSecuenceButton))
@@ -89,7 +91,7 @@ public class VRecRunController extends VControlCenterController
     private void createSequence() 
     {
         this.sequence = new VSequence(this.instrumentLoaded, System.currentTimeMillis());
-        this.railBoard.getController().setInstrumentRecorder(this.sequence);
+        this.player.startRecording(this.sequence);
     }
     
     private void loadSequence()

@@ -1,12 +1,13 @@
 package code.model.datastructures;
 
 import java.io.Serializable;
+import java.util.Iterator;
 
 /**
  *
  * @author Jose Carlos
  */
-public class VQueue<T extends Serializable> implements Serializable
+public class VQueue<T extends Serializable> implements Serializable, Iterable<T>
 {
     private Node<T> first;
     private Node<T> last;
@@ -49,5 +50,45 @@ public class VQueue<T extends Serializable> implements Serializable
             this.count--;
         }
         return res;
+    }
+
+    @Override
+    public Iterator<T> iterator() 
+    {
+        Iterator<T> itetator = new VQueueIterator<T>(this.first);
+        return itetator;
+    }
+    
+    private class VQueueIterator<T> implements Iterator<T> 
+    {
+        private Node<T> current;
+
+        public VQueueIterator(Node<T> first) 
+        {
+            this.current = first;
+        }
+
+        @Override
+        public boolean hasNext() 
+        {
+            return this.current != null;
+        }
+
+        @Override
+        public T next() 
+        {
+            T res = null;
+            if (hasNext())
+            {
+                res = this.current.data();
+                this.current = this.current.next();
+            }
+            return res;
+        }
+
+        @Override
+        public void remove() 
+        {   
+        }
     }
 }

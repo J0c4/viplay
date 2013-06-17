@@ -18,6 +18,12 @@ public class VRail extends VAbstractPanel
         return this.controller;
     }
     
+    public void clear()
+    {
+        this.controller.apocalypse();
+        validate();
+    }
+    
     @Override
     protected void createComponents() 
     {

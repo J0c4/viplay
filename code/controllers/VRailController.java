@@ -21,6 +21,14 @@ public class VRailController extends VAbstractController implements VIRunnableEn
         this.antsRunning = new VQueue<VAnt>();
     }
     
+    public void apocalypse()
+    {
+        for (VAnt ant : antsRunning)
+        {
+            ant.die();
+        }
+    }
+    
     public void runAnt(VAnt ant)
     {
         if (ant != null)
