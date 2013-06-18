@@ -9,16 +9,16 @@ import code.model.instruments.VInstrumentBuilder;
 public class VDrumKit extends VInstrument
 {
     /** Drum kit sounds */
-    public static String BASS_DRUM_AIF = "resources/sounds/drums/DrumMetal.aif";
-    public static String BASS_DRUM_WAV = "resources/sounds/drums/DrumMetal2.wav";
-    public static String SNARE_WAV = "resources/sounds/snares/SnareMetal.wav";
-    public static String TOM_YAMAHA_HIGH_WAV = "resources/sounds/toms/TomYamaha-oak-high.wav";
-    public static String TOM_YAMAHA_MID_WAV = "resources/sounds/toms/TomYamaha-oak-mid.wav";
-    public static String TOM_YAMAHA_LOW_WAV = "resources/sounds/toms/TomYamaha-oak-low.wav";
-    public static String ZYMBAL_1_WAV = "resources/sounds/zymbals/ZymbalPlash1.wav";
-    public static String ZYMBAL_2_WAV = "resources/sounds/zymbals/ZymbalPlash2.wav";
-    public static String ZYMBAL_SMALL_WAV = "resources/sounds/zymbals/SmallZym16_909.wav";
-    public static String DIN_1_AIF = "resources/sounds/zymbals/Din1.aif";
+    public static String BASS_DRUM_AIF = "resources/sounds/drums/drums/DrumMetal.aif";
+    public static String BASS_DRUM_WAV = "resources/sounds/drums/drums/DrumMetal2.wav";
+    public static String SNARE_WAV = "resources/sounds/drums/snares/SnareMetal.wav";
+    public static String TOM_YAMAHA_HIGH_WAV = "resources/sounds/drums/toms/TomYamaha-oak-high.wav";
+    public static String TOM_YAMAHA_MID_WAV = "resources/sounds/drums/toms/TomYamaha-oak-mid.wav";
+    public static String TOM_YAMAHA_LOW_WAV = "resources/sounds/drums/toms/TomYamaha-oak-low.wav";
+    public static String ZYMBAL_1_WAV = "resources/sounds/drums/zymbals/ZymbalPlash1.wav";
+    public static String ZYMBAL_2_WAV = "resources/sounds/drums/zymbals/ZymbalPlash2.wav";
+    public static String ZYMBAL_SMALL_WAV = "resources/sounds/drums/zymbals/SmallZym16_909.wav";
+    public static String DIN_1_AIF = "resources/sounds/drums/zymbals/Din1.aif";
     
     public VDrumKit()
     {
