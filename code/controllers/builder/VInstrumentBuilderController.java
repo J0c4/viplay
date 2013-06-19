@@ -1,5 +1,6 @@
-package code.controllers;
+package code.controllers.builder;
 
+import code.controllers.VAbstractController;
 import code.gui.builder.VBuilderControls;
 import code.gui.builder.VBuiltPanel;
 import code.gui.builder.VInstrumentBuilderPanel;

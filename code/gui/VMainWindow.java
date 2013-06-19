@@ -1,7 +1,7 @@
 package code.gui;
 
 import code.gui.builder.VInstrumentBuilderPanel;
-import code.gui.control.VControlCenter;
+import code.gui.controlcenter.VControlCenter;
 import code.gui.railboard.VRailBoard;
 import java.awt.BorderLayout;
 import java.awt.Dimension;

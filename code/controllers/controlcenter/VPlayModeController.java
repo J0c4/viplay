@@ -1,6 +1,6 @@
-package code.controllers;
+package code.controllers.controlcenter;
 
-import code.gui.control.VPlayModePane;
+import code.gui.controlcenter.VPlayModePane;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;

@@ -1,6 +1,6 @@
 package code.gui.builder;
 
-import code.controllers.VInstrumentBuilderController;
+import code.controllers.builder.VInstrumentBuilderController;
 import code.gui.VAbstractPanel;
 import java.awt.BorderLayout;
 import java.awt.Dimension;

@@ -1,6 +1,6 @@
-package code.gui.control;
+package code.gui.controlcenter;
 
-import code.controllers.VRecRunController;
+import code.controllers.controlcenter.VRecRunController;
 import code.gui.VAbstractPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;

@@ -1,6 +1,6 @@
 package code.model.recorder;
 
-import code.controllers.VRailBoardController;
+import code.controllers.railboard.VRailBoardController;
 import code.gui.VMainWindow;
 import code.model.datastructures.VQueue;
 import code.model.instruments.VInstrument;

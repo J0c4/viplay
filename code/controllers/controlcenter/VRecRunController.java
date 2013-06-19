@@ -1,6 +1,6 @@
-package code.controllers;
+package code.controllers.controlcenter;
 
-import code.gui.control.VRecRunPane;
+import code.gui.controlcenter.VRecRunPane;
 import code.model.VFileManager;
 import code.model.recorder.VSequence;
 import java.awt.Component;

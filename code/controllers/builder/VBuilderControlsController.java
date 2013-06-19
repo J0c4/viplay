@@ -1,5 +1,6 @@
-package code.controllers;
+package code.controllers.builder;
 
+import code.controllers.VAbstractController;
 import code.gui.builder.VBuilderControls;
 import code.model.instruments.VIPlayable;
 import code.model.instruments.VInstrument;

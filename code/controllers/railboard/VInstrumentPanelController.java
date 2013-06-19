@@ -1,5 +1,6 @@
-package code.controllers;
+package code.controllers.railboard;
 
+import code.controllers.VAbstractController;
 import code.gui.railboard.VAnt;
 import code.gui.railboard.VInstrumentPanel;
 import code.model.instruments.VIPlayable;

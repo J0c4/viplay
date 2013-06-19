@@ -1,8 +1,10 @@
-package code.controllers;
+package code.controllers.controlcenter;
 
+import code.controllers.builder.VInstrumentBuilderController;
+import code.controllers.railboard.VInstrumentPanelController;
 import code.gui.VMainWindow;
 import code.gui.builder.VInstrumentBuilderPanel;
-import code.gui.control.VControlCenter;
+import code.gui.controlcenter.VControlCenter;
 import code.gui.railboard.VRailBoard;
 import code.model.instruments.VInstrument;
 import java.awt.event.MouseEvent;

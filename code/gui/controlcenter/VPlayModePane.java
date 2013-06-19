@@ -1,6 +1,6 @@
-package code.gui.control;
+package code.gui.controlcenter;
 
-import code.controllers.VPlayModeController;
+import code.controllers.controlcenter.VPlayModeController;
 import code.gui.VAbstractPanel;
 import javax.swing.JButton;
 

@@ -1,6 +1,6 @@
 package code.gui.builder;
 
-import code.controllers.VBuilderControlsController;
+import code.controllers.builder.VBuilderControlsController;
 import code.gui.VAbstractPanel;
 import java.awt.GridLayout;
 import javax.swing.JButton;

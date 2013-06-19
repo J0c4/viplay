@@ -1,6 +1,6 @@
 package code.gui.railboard;
 
-import code.controllers.VInstrumentPanelController;
+import code.controllers.railboard.VInstrumentPanelController;
 import code.gui.VAbstractPanel;
 import javax.swing.BorderFactory;
 

@@ -1,4 +1,4 @@
-package code.gui.control;
+package code.gui.controlcenter;
 
 import code.gui.VAbstractPanel;
 

@@ -1,4 +1,4 @@
-package code.controllers;
+package code.controllers.builder;
 
 import code.gui.builder.VBuiltPanel;
 import code.model.instruments.VIPlayable;

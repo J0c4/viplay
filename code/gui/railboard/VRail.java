@@ -1,6 +1,6 @@
 package code.gui.railboard;
 
-import code.controllers.VRailController;
+import code.controllers.railboard.VRailController;
 import code.gui.VAbstractPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;

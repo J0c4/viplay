@@ -1,4 +1,4 @@
-package code.gui.control;
+package code.gui.controlcenter;
 
 import javax.swing.BorderFactory;
 import javax.swing.JTabbedPane;
