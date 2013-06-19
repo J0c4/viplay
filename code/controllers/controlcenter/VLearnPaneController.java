@@ -1,12 +1,10 @@
 package code.controllers.controlcenter;
 
 import code.gui.controlcenter.VLearnPane;
-import code.gui.controlcenter.VRecRunPane;
 import code.model.VFileManager;
 import code.model.recorder.VSequence;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
-import java.io.File;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -53,6 +51,7 @@ public class VLearnPaneController extends VControlCenterController
                     setRunningState(true);
                     this.sequence.setIsLearningMode(true);
                     this.railBoard.getController().setIsLearningMode(true);
+                    this.railBoard.getRail().showLine(true);
                     this.sequence.reproduce();
                     this.isReproducing = true;
                 }
@@ -65,6 +64,7 @@ public class VLearnPaneController extends VControlCenterController
                     if (this.isReproducing)
                     {
                         this.sequence.stop();
+                        this.railBoard.getRail().showLine(false);
                         this.isReproducing = false;
                     }
                     this.railBoard.clear();

@@ -2,8 +2,9 @@ package code.gui.railboard;
 
 import code.controllers.railboard.VRailController;
 import code.gui.VAbstractPanel;
-import java.awt.BorderLayout;
-import java.awt.Color;
+import code.gui.VMainWindow;
+import java.awt.*;
+import java.awt.geom.Line2D;
 
 /**
  *
@@ -12,6 +13,7 @@ import java.awt.Color;
 public class VRail extends VAbstractPanel
 {
     private VRailController controller;
+    private boolean showLine;
 
     public VRailController getController()
     {
@@ -22,6 +24,27 @@ public class VRail extends VAbstractPanel
     {
         this.controller.apocalypse();
         validate();
+    }
+    
+    public void showLine(boolean show)
+    {
+        this.showLine = show;
+        this.repaint();
+    }
+    
+    @Override
+    public void paintComponent(Graphics g) 
+    {
+        super.paintComponent(g);
+        if (this.showLine)
+        {
+            Container mainPanel = VMainWindow.window.getContentPane();
+            double lineYPosition = mainPanel.getSize().getHeight() * 0.2;
+            double lineXEnd = mainPanel.getSize().getWidth();
+            Graphics2D g2d = (Graphics2D) g;
+            Line2D line = new Line2D.Double(0, lineYPosition, lineXEnd, lineYPosition);
+            g2d.draw(line);
+        }
     }
     
     @Override
