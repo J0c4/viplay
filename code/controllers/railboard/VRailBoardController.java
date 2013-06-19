@@ -19,11 +19,18 @@ public class VRailBoardController extends VAbstractController implements KeyList
     private VRailController railController;
     private VInstrumentPanelController instrumentPanelController;
     
+    private boolean isLearningMode;
+    
     public VRailBoardController(VRailBoard panel) 
     {
         this.railBoard = panel;
         this.railController = this.railBoard.getRail().getController();
         this.instrumentPanelController = this.railBoard.getInstrumentPanel().getController();
+    }
+
+    public void setIsLearningMode(boolean isLearningMode) 
+    {
+        this.isLearningMode = isLearningMode;
     }
     
     public void loadInstrument(VInstrument toLoad)
@@ -38,8 +45,24 @@ public class VRailBoardController extends VAbstractController implements KeyList
     
     public void playElement(VKey key)
     {
-        VAnt toRun = this.instrumentPanelController.playInstrument(key);
-        railController.runAnt(toRun);
+        playElement(key, true, true);
+    }
+    
+    public void playElement(VKey key, boolean runSound, boolean runAnt)
+    {
+        VAnt toRun;
+        if (runSound)
+        {
+            toRun = this.instrumentPanelController.playInstrument(key);
+        }
+        else
+        {
+            toRun = this.instrumentPanelController.createAnt(key);
+        }
+        if (runAnt)
+        {
+            railController.runAnt(toRun);
+        }
     }
     
     @Override
@@ -51,7 +74,7 @@ public class VRailBoardController extends VAbstractController implements KeyList
     public void keyPressed(KeyEvent e) 
     {
         VKey key = new VKey(e.getKeyCode(), String.valueOf(e.getKeyChar()));
-        playElement(key);
+        playElement(key, true, !this.isLearningMode);
     }
 
     @Override

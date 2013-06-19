@@ -33,6 +33,7 @@ public class VPlayModeController extends VControlCenterController
             {
                 if (loadInstrument())
                 {
+                    this.railBoard.getController().setIsLearningMode(false);
                     this.start.setEnabled(false);
                     this.stop.setEnabled(true);
                 }

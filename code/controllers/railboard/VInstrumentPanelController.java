@@ -57,6 +57,20 @@ public class VInstrumentPanelController extends VAbstractController
     
     public VAnt playInstrument(VKey key)
     {
+        VAnt assigned = createAnt(key);
+        if (assigned != null)
+        {
+            this.loaded.playElement(key);
+            if (this.isRecording)
+            {
+                this.recorder.record(key);
+            }
+        }
+        return assigned;
+    }
+    
+    public VAnt createAnt(VKey key)
+    {
         VAnt triggered = null;
         JButton associated = (JButton)this.antMap.get(key);
         if (associated != null)
@@ -65,12 +79,6 @@ public class VInstrumentPanelController extends VAbstractController
             int antYStart = this.panel.getY();
             String antLabel = key.getKeySymbol();
             triggered = new VAnt(antLabel, antXStart, antYStart);
-            this.loaded.playElement(key);
-            
-            if (this.isRecording)
-            {
-                this.recorder.record(key);
-            }
         }
         return triggered;
     }

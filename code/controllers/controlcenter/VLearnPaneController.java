@@ -1,5 +1,6 @@
 package code.controllers.controlcenter;
 
+import code.gui.controlcenter.VLearnPane;
 import code.gui.controlcenter.VRecRunPane;
 import code.model.VFileManager;
 import code.model.recorder.VSequence;
@@ -13,33 +14,30 @@ import javax.swing.JLabel;
  *
  * @author Jose Carlos
  */
-public class VRecRunController extends VControlCenterController
+public class VLearnPaneController extends VControlCenterController
 {
-    private VRecRunPane pane;
+    private VLearnPane pane;
     
-    private JButton rec;
     private JButton play;
     private JButton stop;
     private JButton loadSecuenceButton;
     private JLabel fileName;
     
     private VSequence sequence;
-    private boolean isRecording;
     private boolean isReproducing;
 
-    public boolean isSecuenceSet()
-    {
-        return this.sequence != null;
-    }
-    
-    public VRecRunController(VRecRunPane pane) 
+    public VLearnPaneController(VLearnPane pane) 
     {
         this.pane = pane;
-        this.rec = pane.getRec();
         this.play = pane.getPlay();
         this.stop = pane.getStop();
         this.loadSecuenceButton = pane.getLoadSecuence();
         this.fileName = pane.getFileName();
+    }
+
+    public boolean isSecuenceSet()
+    {
+        return this.sequence != null;
     }
 
     @Override
@@ -48,21 +46,13 @@ public class VRecRunController extends VControlCenterController
         Component clicked = e.getComponent();
         if (clicked.isEnabled())
         {
-            if (clicked.equals(this.rec))
-            {
-                if (loadInstrument())
-                {
-                   this.railBoard.getController().setIsLearningMode(false);
-                   setRunningState(true);
-                   createSequence();
-                   this.isRecording = true;
-                }
-            }
-            else if (clicked.equals(this.play))
+            if (clicked.equals(this.play))
             {
                 if (loadInstrument())
                 {
                     setRunningState(true);
+                    this.sequence.setIsLearningMode(true);
+                    this.railBoard.getController().setIsLearningMode(true);
                     this.sequence.reproduce();
                     this.isReproducing = true;
                 }
@@ -72,19 +62,7 @@ public class VRecRunController extends VControlCenterController
                 if (unloadInstrument())
                 {
                     setRunningState(false);
-                    if (this.isRecording)
-                    {
-                        File saved = null;
-                        if (!this.sequence.getRecords().isEmpty())
-                        {
-                            saved = VFileManager.instance.saveSecuence(this.sequence);
-                        }
-                        this.sequence = saved == null ? null : this.sequence;
-                        this.isRecording = false;
-                        this.player.stopRecording();
-                        loadSequence();
-                    }
-                    else if (this.isReproducing)
+                    if (this.isReproducing)
                     {
                         this.sequence.stop();
                         this.isReproducing = false;
@@ -98,12 +76,6 @@ public class VRecRunController extends VControlCenterController
                 loadSequence();
             }
         }
-    }
-
-    private void createSequence() 
-    {
-        this.sequence = new VSequence(this.instrumentLoaded, System.currentTimeMillis());
-        this.player.startRecording(this.sequence);
     }
     
     private void loadSequence()
@@ -124,7 +96,6 @@ public class VRecRunController extends VControlCenterController
     {
         this.stop.setEnabled(running);
         this.play.setEnabled(!running);
-        this.rec.setEnabled(!running);
         this.loadSecuenceButton.setEnabled(!running);
     }
     

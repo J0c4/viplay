@@ -29,6 +29,7 @@ public class VControlCenter extends JTabbedPane
     public void setWindowReference()
     {
         this.playMode.setWindowReference();
-        this.recRunMode.setWindowReference();        
+        this.recRunMode.setWindowReference();
+        this.learnMode.setWindowReference();
     }
 }

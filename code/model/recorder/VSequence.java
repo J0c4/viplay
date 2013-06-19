@@ -20,6 +20,7 @@ public class VSequence implements Serializable, Runnable
     
     private long lastPlayedTime;
     private long newPlayedTime;
+    private boolean isLearningMode;
     
     public VSequence(VInstrument instrument, long startTime)
     {
@@ -51,6 +52,11 @@ public class VSequence implements Serializable, Runnable
     public void setName(String name) 
     {
         this.name = name;
+    }
+
+    public void setIsLearningMode(boolean isLearningMode) 
+    {
+        this.isLearningMode = isLearningMode;
     }
     
     public void record(VKey key)
@@ -90,7 +96,7 @@ public class VSequence implements Serializable, Runnable
                 Thread.sleep(record.getStartTime());
             }
             catch(Exception e){}
-            player.playElement(record.getKey());
+            player.playElement(record.getKey(), !this.isLearningMode, true);
         }
     }
 }
